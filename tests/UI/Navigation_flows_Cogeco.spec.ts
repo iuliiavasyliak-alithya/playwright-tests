@@ -2,10 +2,13 @@ import { test, expect } from '@playwright/test';
 import { CogecoHomePage } from '../../pages/cogecoHomePage';
 import { CogecoNavigationMenus } from '../../pages/cogecoNavigationMenus';  
 
-test.describe('Cogeco main PageTests', () => {
+
+
+test.describe('E2E: Cogeco Navigation Flows', () => {
   let home: CogecoHomePage;
   let menu: CogecoNavigationMenus;
 
+//Initializes page objects and navigates to homepage before each test 
 test.beforeEach( async ({ page }) => {
         home = new CogecoHomePage(page);
         menu = new CogecoNavigationMenus(page);
@@ -13,7 +16,8 @@ test.beforeEach( async ({ page }) => {
     await home.goto();
     });
 
-    test('Main page validation', async ({ page }) => {
+    //Validate main homepage elements and content
+    test('Homepage UI validation', async ({ page }) => {
     
     await expect(home.promoText).toBeVisible();
     await expect(home.promoText).toContainText('The simplest part of your move');
@@ -43,6 +47,7 @@ test.beforeEach( async ({ page }) => {
     await expect(home.supportButton).toBeVisible();
 });
 
+//Navigation: Internet menu
 test('Internet menu navigation', async ({ page }) => {
     await home.openInternetMenu();
 
@@ -55,6 +60,7 @@ test('Internet menu navigation', async ({ page }) => {
     
 });
 
+//Navigation: Mobile menu
 test('Mobile menu navigation', async ({ page }) => {
     await home.openMobileMenu();
 
@@ -66,6 +72,7 @@ test('Mobile menu navigation', async ({ page }) => {
     await expect(menu.internetMobilePackages).toBeVisible();
 });
 
+//Navigation: TV menu
 test('TV menu navigation', async ({ page }) => {
     
     await home.openTVMenu();
@@ -81,6 +88,7 @@ test('TV menu navigation', async ({ page }) => {
     await expect(menu.freePreviews).toBeVisible();
 });
 
+//Navigation: Promos menu
 test('Promos menu navigation', async ({ page }) => {
     
     await home.openPromosMenu();
@@ -96,6 +104,7 @@ test('Promos menu navigation', async ({ page }) => {
     
 });
 
+//Navigation: Support menu
 test('Support menu navigation', async ({ page }) => {
     
     await home.openSupportMenu();

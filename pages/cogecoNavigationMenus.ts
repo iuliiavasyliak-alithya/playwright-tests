@@ -1,10 +1,25 @@
 
 import { Page, Locator } from '@playwright/test';
 
+/**
+ * Page Object: Cogeco Navigation Menus
+ *
+ * Purpose:
+ * Represents dropdown menu items for each main navigation section.
+ *
+ * Design:
+ * - Separates menu elements from homepage for better scalability
+ * - Improves readability of navigation tests
+ *
+ * Why:
+ * Navigation structures can change independently → this separation allows easier maintenance.
+ */
+
+
 export class CogecoNavigationMenus {
   readonly page: Page;
 
-  // INTERNET
+  // ===== INTERNET MENU =====
   readonly internetWhy: Locator;
   readonly internetPackages: Locator;
   readonly internetMobilePackages: Locator;
@@ -12,14 +27,14 @@ export class CogecoNavigationMenus {
   readonly wifiExtender: Locator;
   readonly security: Locator;
 
-  // MOBILE
+  // ===== MOBILE MENU =====
   readonly mobileWhy: Locator;
   readonly mobilePlans: Locator;
   readonly coverageMap: Locator;
   readonly addOns: Locator;
   readonly travel: Locator;
   
-  // TV
+  // ===== TV MENU =====
   readonly tvWhy: Locator;
   readonly internetTVPackages: Locator;
   readonly epicoApp: Locator;
@@ -30,14 +45,14 @@ export class CogecoNavigationMenus {
   readonly liveOnDemand: Locator;
   readonly freePreviews: Locator;
 
-  // PROMOS
+  // ===== PROMOS MENU =====
   readonly allOffers: Locator;
   readonly moving: Locator;
   readonly students: Locator;
   readonly referFriend: Locator;
   readonly homePhonePackages: Locator;
 
-  // SUPPORT
+  // ===== SUPPORT MENU =====
   readonly supportInternet: Locator;
   readonly supportMobile: Locator;
   readonly epico: Locator;
@@ -54,7 +69,7 @@ export class CogecoNavigationMenus {
   constructor(page: Page) {
     this.page = page;
 
-    // INTERNET
+    // // INTERNET MENU ITEMS
     this.internetWhy = page.getByRole('menuitem', { name: 'Internet Why Cogeco Internet' });
     this.internetPackages = page.getByLabel('Internet Packages').first();
     this.internetMobilePackages = page.getByRole('link', { name: 'Internet + Mobile Packages'}).first();
@@ -62,14 +77,14 @@ export class CogecoNavigationMenus {
     this.wifiExtender = page.getByRole('link', { name: 'Cogeco Wi-Fi extender'});
     this.security = page.getByRole('link', { name: 'Cogeco Security'});
 
-    // MOBILE
+    // MOBILE MENU ITEMS
     this.mobileWhy = page.getByRole('link', { name: 'Why Cogeco Mobile?'});
     this.mobilePlans = page.getByRole('link', { name: 'Plans' });
     this.coverageMap = page.getByRole('link', { name: 'Coverage map' }).first();
     this.addOns = page.getByRole('link', { name: 'Add-ons'});
     this.travel = page.getByRole('link', { name: 'Travel'});
 
-    // TV
+    // TV MENU ITEMS
     this.tvWhy = page.getByRole('link', { name: 'Why Cogeco Internet + TV?'});
     this.internetTVPackages = page.getByRole('link', { name: 'Internet + TV packages'}).first();
     this.epicoApp = page.getByRole('link', { name: 'EPICO app' });
@@ -80,14 +95,14 @@ export class CogecoNavigationMenus {
     this.liveOnDemand = page.getByRole('link', { name: 'Live and On Demand' });
     this.freePreviews = page.getByRole('link', { name: 'Free previews' });
 
-    // PROMOS
+    // PROMOS MENU ITEMS
     this.allOffers = page.getByRole('link', { name: 'All offers' });
     this.moving = page.getByRole('link', { name: 'Moving', exact: true});
     this.students = page.getByRole('link', { name: 'Students' });
     this.referFriend = page.getByRole('link', { name: 'Refer a friend'}).first();
     this.homePhonePackages = page.getByRole('link', { name: 'Home Phone packages'}).first();
 
-    // SUPPORT
+    // SUPPORT MENU ITEMS
     this.supportInternet = page.getByRole('link', { name: 'Internet' }).first();
     this.supportMobile = page.getByRole('link', { name: 'Mobile' }).first();
     this.epico = page.getByRole('link', { name: 'EPICO'}).first();

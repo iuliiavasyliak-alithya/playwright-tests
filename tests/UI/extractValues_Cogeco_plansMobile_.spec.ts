@@ -1,5 +1,9 @@
 import { test, expect } from '@playwright/test';
 
+
+
+test.describe('E2E: Mobile Plans Price Validation', () => {
+  
 test.beforeEach( async ({ page }) => {
         await page.goto('https://www.cogeco.ca/en/mobile/plans')
     });
@@ -78,4 +82,6 @@ test('Check price of Rollover data 25 GB plan', async ({ page }) => {
 
   //  validation
   expect(actualPrice).toBe(expectedPrice);
+});
+
 });
