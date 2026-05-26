@@ -1,5 +1,6 @@
 import { Page, Locator } from "@playwright/test";
 
+
 /**
  * Page Object: Cogeco Home Page
  *
@@ -51,7 +52,7 @@ export class CogecoHomePage {
 
 // ===== MAIN CONTENT =====
   // Main promotional content displayed on homepage
-  readonly promoText: Locator;
+  //readonly promoText: Locator;
   readonly saveInternetLink: Locator;
 
   constructor(page: Page) {
@@ -79,13 +80,16 @@ export class CogecoHomePage {
     this.promotionsTab = page.getByRole('tab', { name: 'Promotions' });
 
     // MAIN CONTENT (homepage banner + promotional content)
-    this.promoText = page.getByText('The simplest part of your move');
+    //this.promoText = page.getByText('The simplest part of your move');
     this.saveInternetLink = page.locator('#grid-r2').getByRole('link', { name: 'Save on Internet', exact: true });
   }
 
   //Navigate to homepage 
   async goto() {
-    await this.page.goto('https://www.cogeco.ca/en');
+  
+     await this.page.goto('https://www.cogeco.ca/en');
+
+     
   }
 
   // ===== ACTIONS =====

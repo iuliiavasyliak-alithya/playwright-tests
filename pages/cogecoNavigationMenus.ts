@@ -1,6 +1,7 @@
 
 import { Page, Locator } from '@playwright/test';
 
+
 /**
  * Page Object: Cogeco Navigation Menus
  *

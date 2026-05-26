@@ -32,6 +32,7 @@ This project demonstrates advanced Playwright capabilities including:
 playwright-tests/
 │
 ├── tests/
+|   ├── cogeco/            → End-to-End tests (user flows for cogeco)
 │   ├── ui/                → End-to-End tests (user flows)
 │   ├── component/         → Component-level tests
 │   ├── api/               → (planned) API tests
@@ -100,6 +101,21 @@ npx playwright install
 
 ---
 # Running Tests
+
+## Important Note how to run Cogeco tests!
+Due to Cloudflare anti-bot protection on the Cogeco website, Playwright tests cannot reliably run using the full test suite command:
+npx playwright test
+
+Stable execution is only possible when running in headed mode:
+1. to run both tests: npx playwright test tests/cogeco --headed --project=chromium
+
+2. to run separetly each test :
+npx playwright test tests/cogeco/navigation_flows_Cogeco.spec.ts --headed --project=chromium
+npx playwright test tests/cogeco/extractValues_Cogeco_plansMobile_.spec.ts --headed --project=chromium
+
+This limitation is caused by Cloudflare detecting automated browser contexts and blocking them during standard test execution.
+To avoid fail of the test extractValue_Cogeco_plansMobile.spec.ts make sure that the prices in the script correspond the prices on the site
+To avoid conflict cogeco scripts contains tag skip, to run them - remove the tag skip
 
 ## Run all tests:
 npx playwright test
