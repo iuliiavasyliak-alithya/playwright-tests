@@ -40,7 +40,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     // Runs browser in visible mode (NOT headless): useful for debugging and observing test execution
-    headless: false,
+    headless: process.env.CI ? true : false,
    
 
     /* Base URL to use in actions like `await page.goto('')`. */
