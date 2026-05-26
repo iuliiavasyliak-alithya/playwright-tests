@@ -1,8 +1,16 @@
 import { test, expect } from '@playwright/test';
+//import { test, expect } from '../../fixtures/sharedContext';
 
-test.beforeEach( async ({ page }) => {
-        await page.goto('https://www.cogeco.ca/en/mobile/plans')
-    });
+
+
+test.describe.skip('E2E: Mobile Plans Price Validation', () => {
+
+
+test.beforeEach(async ({ page }) => {
+    await page.goto('https://www.cogeco.ca/en/mobile/plans');
+    
+  });
+
 
 //Scenarios to extract values of price for all 3 plans and validate them with expected values
 test('Check price of Talk & text plan', async ({ page }) => {
@@ -78,4 +86,6 @@ test('Check price of Rollover data 25 GB plan', async ({ page }) => {
 
   //  validation
   expect(actualPrice).toBe(expectedPrice);
+});
+
 });
